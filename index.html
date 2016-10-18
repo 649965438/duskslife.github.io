@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <meta name="theme-color" content="#333">
+    <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
+    <link href="css/default.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" media="(max-width: 1080px)" href="css/max-1080px.css">
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/search.js"></script>
+    <title>ACGN BETA</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="" class="title">ACGN</a>
+            <div class="headerRight">
+                <div class="search"><input class="search-content" placeholder="Search..." type="text"><button onclick="re()" class="search-button">Search</button></div>
+                <div class="login"><a href="#">Login</a></div>
+            </div>
+
+            <div class="menu">
+                <ul class="nav">
+                    <li><i href="#" class="icon icon-forum"><a href="/" class="sort">Forum</a></i></li>
+                    <li><i href="#" class="icon icon-anime"><a href="#" class="sort">Anime</a></i></li>
+                    <li><i href="#" class="icon icon-music"><a href="#" class="sort">Music</a></i></li>
+                    <li><i href="#" class="icon icon-game"><a href="#" class="sort">Game</a></i></li>
+                    <li><i href="#" class="icon icon-novel"><a href="#" class="sort">Novel</a></i></li>
+                    <li><i href="#" class="icon icon-comics"><a href="#" class="sort">Comics</a></i></li>
+                    <li><i href="#" class="icon icon-wallpaper"><a href="#" class="sort">Wallpaper</a></i></li>
+                    <li><i href="#" class="icon icon-bt"><a href="#" class="sort">BT</a></i></li>
+                </ul>
+                <i class="icon icon-down" onClick="close_icon()"></i>
+            </div>
+            <!--menu list show-->
+            <div class="menu-button">
+                <button class="sort-button forum">Forum</button>
+                <button class="sort-button anime">Anime</button>
+                <button class="sort-button music">Music</button>
+                <button class="sort-button game">Game</button>
+                <button class="sort-button novel">Novel</button>
+                <button class="sort-button comics">Comics</button>
+                <button class="sort-button wallpaper">Wallpaper</button>
+                <button class="sort-button bt">BT</button>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="postlist">
+
+                <!-- list cycle -->
+                <li class="postlist-conten">
+                    <a class="postlist-title" href=""><h1>Hello World !</h1></a>
+                    <span class="title-tags"><i class="icon icon-tags"></i>Test Admin</span>
+                    <div class="container">
+                        <img class="container-img" src="" />
+                        <pre class="container-img-p">This is Admin de su ...</pre>
+                    </div>
+                    <p class="postarch">
+                        <span><i class="icon icon-time"></i><span data-time="" class="time">2016-10-15 18:35:27</span></span>
+                        <span><i class="icon icon-comment"></i><span id="comment" data-thread-key="" class="ds-thread-count">0条评论</span></span>
+                    </p>
+                </li>
+                <!-- list cycle end -->
+
+                <!-- list cycle -->
+                <li class="postlist-conten">
+                    <a class="postlist-title" href=""><h1>Transmission daemon的安装与配置</h1></a>
+                    <span class="title-tags"><i class="icon icon-tags"></i>Transmission Downloads Application</span>
+                    <div class="container">
+                        <img class="container-img" src="" />
+
+                        <span><div>网上有大量的BitTorrent资源，很多电影、书籍和音乐的资源非常好，让人很想把它们都收集起来。但是如果开着自己的个人电脑来下载这些资源效率比较低，一是个人电脑不可能7×24小时开着不关机，二是个人电脑的网络环境不稳定，网速一般不够快，如果是笔记本随身携带还会随时更换上网信号。而服务器这种24小时不关机，网速好的条件特别适合用来下载这些BT资源。</div><div><br/></div><div>因此，我决定在我的<span style="color: rgb(0, 0, 0);"><a href="https://www.linode.com/?r=69044509f94e04dadb67d37bf5276639ea83432e"><span style="color: rgb(0, 0, 0);">Linode</span></a>服务器上部署一个BitTorrent下载器。目前有很多款Linux下的BitTorrent客户端软件，例如rTorrent、Vuze等等。这些软件种类繁多，其性能和对BT协议的支持也不尽相同，在
+                        <a
+                            href="http://en.wikipedia.org/wiki/Comparison_of_BitTorrent_clients"><span style="color: rgb(0, 0, 0);">WikePedia</span></a>上还有这些软件的比较。根据网上很多博客的分析，和我自己的使用感受，我感觉Transmission是其中较好的一款软件，而且Transmission还是Ubuntu桌面版的默认BT下载软件。因此我选择将Transmission部署到服务器上。</span>
+                    </div>
+                    <div><br/></div>
+                    <div>1. Transmission介绍</div>
+                    <div><br/></div>
+                    <div>Transmission是一个强大的BitTorrent开源客户端，实现了BT协议中描述的大多数功能。目前，在它的<span style="color: rgb(0, 0, 0);"><a href="https://www.transmissionbt.com/"><span style="color: rgb(0, 0, 0);">官方网站</span></a>上提供了多个版本可以下载，包括：Mac、GTK+、QT版本，还有Daemon版本。</span>
+                    </div>
+                    <div><br/></div>
+                    <div>Transmission支持DHT、Magnet Link、uTP以及PEX等特性。尤其是支持Magnet Link磁力链接下载十分重要，因为目前网上很多资源都是采用这种方式来分享的，而不是传统的.torrent文件，例如<span style="color: rgb(0, 0, 0);"><a href="http://thepiratebay.ee/"><span style="color: rgb(0, 0, 0);">TPB</span></a>、
+                        <a
+                            href="http://btdigg.org/"><span style="color: rgb(0, 0, 0);">BTDigg</span></a>。</span>
+                    </div>
+                    <div><br/></div>
+                    <div>在Ubuntu的发行版中，Transmission软件包下面包含多个套件，这些套件的名字很容易搞混淆，它们分别是：</div>
+                    <ul>
+                        <li><b>transmission-gtk</b>: GTK+界面的Transmission BT客户端。</li>
+                        <li><b>transmission-qt</b>: QT界面的Transmission BT客户端。</li>
+                        <li><b>transmission-cli</b>: 命令行界面的Transmission BT客户端，与QT、GTK+版本功能一样，是命令行下一个完备的BT客户端。</li>
+                    </ul>
+                    <ul>
+                        <li><b>transmission-daemon</b>: 是一个Transmission的后台守护程序，本身不具备操作指令，只能通过Web客户端或者transmission-remote-cli来进行控制。这个程序特别适合安装在服务器上或者嵌入式系统中，以及一些没有显示器的设备上。</li>
+                    </ul>
+                    <ul>
+                        <li><b>transmission-remote-cli</b>: 用来控制transmission-daemon的命令套件，本身不具备下载BT的功能，只能够配合daemon使用。</li>
+                    </ul>
+                    <div>这些套件不必都安装上，根据我的需求，只需要安装transmission-daemon即可。接下来讲详细介绍daemon的安装和配置。</div>
+                    <div><br/></div>
+                    <div>2. Transmission的安装</div>
+                    <div><br/></div>
+                    <div>在Ubuntu中，打开终端，输入以下命令安装：</div>
+                    <div><br/></div>
+                    <div style="box-sizing: border-box; padding: 8px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.148438);">
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">sudo apt-get install transmission-daemon</span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div><br/></div>
+                    <div>安装过程中会顺带把transmission-cli也安装上，安装完毕后系统会多出如下一些命令行工具</div>
+                    <ul>
+                        <li>transmission-cli： 独立的命令行客户端。</li>
+                        <li>transmission-create： 用来建立.torrent种子文件的命令行工具。</li>
+                        <li>transmission-daemon： 后台守护程序。</li>
+                        <li>transmission-edit： 用来修改.torrent种子文件的announce URL。</li>
+                        <li>transmission-remote： 控制daemon的程序。</li>
+                        <li>transmission-show：查看.torrent文件的信息。</li>
+                    </ul>
+                    <div>安装好后，Transmission-daemon有一些默认设置<span style="color: rgb(0, 0, 0);">(<span style="color: rgb(0, 0, 0);"><a href="https://trac.transmissionbt.com/wiki/UnixServer/Debian"><span style="color: rgb(0, 0, 0);">参考链接</span></a>)</span>。</span>
+                    </div>
+                    <div><br/></div>
+                    <div>默认配置目录清单</div>
+                    <table style="-evernote-table:true;border-collapse:collapse;table-layout:fixed;width:100%;">
+                        <tbody>
+                            <tr>
+                                <td style="border-style:solid;border-width:1px;border-color:rgb(211,211,211);padding:10px;margin:0px;width:50%;">
+                                    <div><b>Item</b></div>
+                                </td>
+                                <td style="border-style:solid;border-width:1px;border-color:rgb(211,211,211);padding:10px;margin:0px;width:49.889135254988915%;">
+                                    <div><b>Loccation</b></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-style:solid;border-width:1px;border-color:rgb(211,211,211);padding:10px;margin:0px;width:50%;">
+                                    <div>启动初始化脚本</div>
+                                </td>
+                                <td style="border-style:solid;border-width:1px;border-color:rgb(211,211,211);padding:10px;margin:0px;width:50%;">
+                                    <div>/etc/init.d/transmission-daemon</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-style:solid;border-width:1px;border-color:rgb(211,211,211);padding:10px;margin:0px;width:50%;">
+                                    <div>基本配置文件</div>
+                                </td>
+                                <td style="border-style:solid;border-width:1px;border-color:rgb(211,211,211);padding:10px;margin:0px;width:50%;">
+                                    <div>/etc/default/transmission-daemon</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-style:solid;border-width:1px;border-color:rgb(211,211,211);padding:10px;margin:0px;width:50%;">
+                                    <div>详细配置文件目录</div>
+                                </td>
+                                <td style="border-style:solid;border-width:1px;border-color:rgb(211,211,211);padding:10px;margin:0px;width:50%;">
+                                    <div>/var/lib/transmsision-daemon/info</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-style:solid;border-width:1px;border-color:rgb(211,211,211);padding:10px;margin:0px;width:50%;">
+                                    <div>下载存储目录</div>
+                                </td>
+                                <td style="border-style:solid;border-width:1px;border-color:rgb(211,211,211);padding:10px;margin:0px;width:50%;">
+                                    <div>/var/lib/transmission-daemon/downloads</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div><br/></div>
+                    <div><span style="color: rgb(0, 0, 0);"><a href="https://trac.transmissionbt.com/wiki/ConfigFiles"><span style="color: rgb(0, 0, 0);">配置文件目录</span></a>里面包含如下一些文件：</span>
+                    </div>
+                    <ul>
+                        <li>settings.json： 主要的配置文件，设置daemon的各项参数，包括RPC的用户名密码配置。它实际上是一个符号链接，指向的原始文件是/etc/transmission-daemon/settings.json。里面的参数解释可以参考<span style="color: rgb(0, 0, 0);"><a href="https://trac.transmissionbt.com/wiki/EditConfigFiles"><span style="color: rgb(0, 0, 0);">官网的配置说明</span></a>。</span>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>torrents/： 用户存放.torrent种子文件的目录,凡是添加到下载任务的种子，都存放在这里。.torrent的命名包含,种子文件本身的名字和种子的SHA1 HASH值。</li>
+                    </ul>
+                    <ul>
+                        <li>resume/： 该存放了.resume文件，.resume文件包含了一个种子的信息，例如该文件哪些部分被下载了，下载的数据存储的位置等等。</li>
+                    </ul>
+                    <ul>
+                        <li>blocklists/： 存储被屏蔽的peer的地址。</li>
+                        <li>dht.dat： 存储DHT节点信息。</li>
+                    </ul>
+                    <div>默认用户</div>
+                    <div><br/></div>
+                    <div>默认创建一个用户来专门运行transmission-daemon，用户名为：debian-transmission。</div>
+                    <div><br/></div>
+                    <div><b>注意</b>： 如果使用另外一个用户来运行transmission-daemon的话，会在该用户的目录下，创建一个.config/transmission-daemon的文件夹，在这个文件夹里有单独的settings.json配置文件来配置这个用户对应的daemon进程，下载目录也会变为$HOME/Download。</div>
+                    <div><br/></div>
+                    <div>按照默认用户和默认配置目录来正确启动和停止transmission-daemon的方式如下。我也将采用这种方式。</div>
+                    <div><br/></div>
+                    <div style="box-sizing: border-box; padding: 8px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.148438);">
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);"># 启动</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">sudo service transmission-daemon start</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);"># 停止</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">sudo service transmission-daemon stop</span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div><br/></div>
+                    <div>启动成功后，可以看到daemon的进程如下</div>
+                    <div><br/></div>
+                    <div style="-en-codeblock: true; box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.14902); background-position: initial initial; background-repeat: initial initial;">
+                        <div>$ ps aux | grep 'transmission-daemon'</div>
+                        <div>debian-+  5509  0.0  0.6 250700  6456 ?  Ssl  04:31  0:00 /usr/bin/transmission-daemon -f --config-dir /var/lib/transmission-daemon/info</div>
+                    </div>
+                    <div><br/></div>
+                    <div>3. Transmission的配置</div>
+                    <div><br/></div>
+                    <div>配置主要是通过修改<b>/var/lib/transmission-daemon/info/settings.json</b>文件中的参数来实现的。</div>
+                    <div><br/></div>
+                    <div><b>注意</b>：在编辑Transmission的配置文件的时候，需要先关闭daemon进程，否则编辑的参数将会被恢复到原来的状态。</div>
+                    <div><br/></div>
+                    <div>配置RPC</div>
+                    <div><br/></div>
+                    <div>最关键的就是要配置RPC，因为无论是Web界面还是CLI都是通过RPC协议和daemon来进行交互的。在settings.json中与RPC相关的参数有以下几个：</div>
+                    <ul>
+                        <li>rpc-authentication-required: Boolean (default = false)</li>
+                        <li>rpc-bind-address: String (default = “0.0.0.0”) Where to listen for RPC connections</li>
+                        <li>rpc-enabled: Boolean (default = true)</li>
+                        <li>rpc-password: String</li>
+                        <li>rpc-port: Number (default = 9091)</li>
+                        <li>rpc-url: String (default = /transmission/. Added in v2.2)</li>
+                        <li>rpc-username: String</li>
+                        <li>rpc-whitelist: String (Comma-delimited list of IP addresses. Wildcards allowed using ‘<i>‘. Example: “127.0.0.</i>,192.168.<i>.</i>“, Default: “127.0.0.1” )</li>
+                    </ul>
+                    <ul>
+                        <li>rpc-whitelist-enabled: Boolean (default = true)</li>
+                    </ul>
+                    <div><br/></div>
+                    <div>打开文件/var/lib/transmission-daemon/info/settings.json，修改配置参数如下：</div>
+                    <div><br/></div>
+                    <div style="box-sizing: border-box; padding: 8px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.148438);">
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">{</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">    ......</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">    &quot;rpc-authentication-required&quot;: true</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">    &quot;rpc-bind-address&quot;: &quot;0.0.0.0&quot;,</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">    &quot;rpc-enabled&quot;: true,</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">    &quot;rpc-password&quot;: &quot;123456&quot;,</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">    &quot;rpc-port&quot;: 9091,</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">    &quot;rpc-url&quot;: &quot;/transmission/&quot;,</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">    &quot;rpc-username&quot;: &quot;transmission&quot;,</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">    &quot;rpc-whitelist&quot;: &quot;*&quot;,</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">    &quot;rpc-whitelist-enabled&quot;: true,</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">    ......</span></span>
+                            </span>
+                        </div>
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">}</span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div><br/></div>
+                    <div>我将用户名设置为了transmission，密码设置为了123456，whitelist设置成了”*”，表示任何IP都可以通过RPC协议访问这个daemon。需要注意的是password设置成了明文。当启动daemon之后，daemon会自动检测密码设置。如果发现密码配置被修改了，daemon会自动计算修改后的密码的HASH值，并用这个HASH值替换掉配置文件中的明文密码，这样会更安全。</div>
+                    <div><br/></div>
+                    <div>输入service transmission-daemon start启动程序后，打开settings.json，会看到rpc-password一项被改为了HASH值。</div>
+                    <div><br/></div>
+                    <div style="box-sizing: border-box; padding: 8px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.148438);">
+                        <div><span style="font-size: 12px;"><span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;"><span style="color: rgb(51, 51, 51);">&quot;rpc-password&quot;: &quot;{5f4bd5498bddd9aa2ad8f4d475dcebe23e9d8c8bsorspnUE&quot;,</span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div><br/></div>
+                    <div>配置其它参数</div>
+                    <div><br/></div>
+                    <div>settings.json里面还有很多参数可以配置，包括上传/下载速度的限制、DHT的配置、端口设置等等，详细的参数解释可以参考<span style="color: rgb(0, 0, 0);"><a href="https://trac.transmissionbt.com/wiki/EditConfigFiles"><span style="color: rgb(0, 0, 0);">官网的配置说明</span></a>，这里不再赘述。</span>
+                    </div>
+                    <div><br/></div>
+                    <div>4. 使用Web界面控制Transmission daemon</div>
+                    <div><br/></div>
+                    <div>经过上述配置后，我们就可以通过Web界面来访问和控制Transmission daemon了。在浏览器里面输入以下地址</div>
+                    <div><br/></div>
+                    <div>http://&lt;your.server.ip.addr&gt;:9091/transmission/web/<br/><br/></div>
+                    <div><br/></div>
+                    <div>浏览器提示你输入刚才配置的用户名和密码，就可以成功登陆Web管理界面。界面和桌面版的GUI程序有点像，操作起来很方便。下图是我尝试使用的界面。</div>
+                    <div><br/></div>
+                    <div><a href="http://cliang.info/wp-content/uploads/2014/10/Screenshot-from-2014-10-07-140419.png"><span style="color: rgb(0, 0, 0);"><img src="image/temp/Transmission-daemon.png" type="image/png" alt="Transmission Daemon Web UI" style="width:100%;height: auto;"/></span></a></div>
+                    <div>Transmission Daemon Web UI</div>
+                    <div><br/></div>
+                    <div>比较热们的种子下载速度达到了几兆每秒，可以24小时无人值守地下载，而且不论你在哪里，输入一个URL就可以管理下载了，非常的方便。如果您也想试试，那就快买个服务器来按照本文部署一下吧。推荐使用<span style="color: rgb(0, 0, 0);"><a href="https://www.linode.com/?r=69044509f94e04dadb67d37bf5276639ea83432e"><span style="color: rgb(0, 0, 0);">Linode</span></a>的服务器，速度还蛮快的。</span>
+                    </div>
+                    </span>
+            </div>
+            <p class="postarch">
+                <span><i class="icon icon-time"></i><span data-time="" class="time">2016-10-15 18:35:27</span></span>
+                <span><i class="icon icon-comment"></i><span id="comment" data-thread-key="" class="ds-thread-count">0条评论</span></span>
+            </p>
+            </li>
+            <!-- list cycle end -->
+
+        </div>
+
+        <div class="sidebar">
+            <div class="update">
+                <h3>Update</h3>
+            </div>
+
+            <div class="tags">
+                <h3>Tags</h3>
+                <a class="tagslist" title="" href="">AVG</a>
+                <a class="tagslist" title="" href="">STEAM</a>
+                <a class="tagslist" title="" href="">NTR</a>
+                <a class="tagslist" title="" href="">RPG</a>
+                <a class="tagslist" title="" href="">SLG</a>
+            </div>
+
+            <div class="comment">
+                <h3>New Comment</h3>
+            </div>
+        </div>
+
+    </div>
+    <div class="breeze" onclick="close_icon()"></div>
+    <div class="footer">Copyright © 2016 ACGN All Right Reserved .</div>
+    </div>
+    </div>
+    <script type="text/javascript">
+        isEnterIndex();
+    </script>
+</body>
+
+</html>
